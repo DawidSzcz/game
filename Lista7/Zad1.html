@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zad1</title>
+        <script type="application/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+            
+            if (typeof XMLHttpRequest == "undefined") {
+                XMLHttpRequest = function() {
+                    //IE wykorzystuje biblioteki ActiveX do tworzenia obiektu XMLHttpRequest
+                    return new ActiveXObject(
+                        //IE5 używa innego obektu XMLHTTP niż IE6 i wyższe
+                        navigator.userAgent.indexOf("MSIE 5") >=0 ? "Microsoft.XMLHTTP" : "Msxml2.XMLHTTP"
+                    );
+                }
+            }
+            
+            
+            var StateChange =  function(){
+                //4 = dokument został w pełni przesłany i jest gotowy do użycia
+                if ( this.readyState == 4 ) {
+                    $("#img").html("");
+                    var img = document.createElement("img");
+                    img.setAttribute("src", this.responseXML.getElementsByTagName("img")[0].childNodes[0].nodeValue);
+                    var desc = document.createTextNode(this.responseXML.getElementsByTagName("desc")[0].childNodes[0].nodeValue);
+                    
+                    $("#img").append(img);
+                    $("#img").append("<br/>");
+                    $("#img").append(desc);
+                    
+                    
+                }
+            };
+            
+			function f()
+            {
+                var xml = new XMLHttpRequest();
+                xml.onreadystatechange = StateChange;
+                xml.open("POST", "http://localhost/Lista7/Zad1.php", true);
+                xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xml.send("city="+$("select").val());
+            }
+		</script>
+	</head>
+	<body>
+        <select>
+            <option>Wroclaw</option>
+            <option>Krakow</option>
+        </select>
+        <input type="button" onclick="f()" value="BUTT"/>
+        <div id="img"></div>
+        
+	</body>
+
+</html>

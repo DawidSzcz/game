@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="application/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $("form").submit(function(event)
+                {
+                    $.ajax(
+                    {
+                        method: "POST",
+                        url: "Zad4.php",
+                        data:
+                        {
+                            login : $("#login").val(),
+                            pass : $("#pass").val(),
+                            confirm : $("#confirm").val(),
+                            birth : $("#birth").val()
+                        },
+                        success : function(msg)
+                        {
+                            $(".msg").html(msg);                    
+                        },
+                        error: function(sth, msg) {
+                            alert( msg);
+                        }
+                    });
+                    event.preventDefault();
+                });
+            });
+		</script>
+    </head>
+    <body>
+        <div class="msg"></div>
+        <form>
+        <table>
+            <tr>
+                <td>Login</td>
+                <td><input type="text" name="login" id="login"/></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" name="pass" id="pass"/></td>
+            </tr>
+            <tr>
+                <td>Confirm</td>
+                <td><input type="text" name="confirm" id="confirm"/></td>
+            </tr>
+            <tr>
+                <td>Birth date</td>
+                <td><input type="text" name="birth" id="birth"/></td>
+            </tr>
+        </table>
+            <input type="submit"/>
+        </form>
+    </body>
+</html>

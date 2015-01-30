@@ -1,0 +1,2 @@
+Jest zaliczany do protoko³ów bezstanowych (ang. stateless) z racji tego, ¿e nie zachowuje ¿adnych
+ informacji o poprzednich transakcjach z klientem (po zakoñczeniu transakcji wszystko "przepada"). 

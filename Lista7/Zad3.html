@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zad1</title>
+        <script type="application/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $("input#b").click(function()
+                    {
+                        $.ajax(
+                        {
+                            type: "POST",
+                            url: "Zad1.php",
+                            data: 
+                            {
+                                city: $("select").val()
+                            },
+                            success: function(data){
+                                $("#img").html("");
+                                var img = document.createElement("img");
+                                img.setAttribute("src", data.getElementsByTagName("img")[0].childNodes[0].nodeValue);
+                                var desc = document.createTextNode(data.getElementsByTagName("desc")[0].childNodes[0].nodeValue);
+
+                                $("#img").append(img);
+                                $("#img").append("<br/>");
+                                $("#img").append(desc);
+                            }
+                        }
+                        );
+                    }
+                )
+            });
+		</script>
+	</head>
+	<body>
+        <select>
+            <option>Wroclaw</option>
+            <option>Krakow</option>
+        </select>
+        <input type="button" id="b" value="BUTT"/>
+        <div id="img"></div>
+        
+	</body>
+
+</html>

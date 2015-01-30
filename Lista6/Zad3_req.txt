@@ -1,0 +1,7 @@
+POST http://localhost/server.php HTTP/1.1
+User-Agent: Fiddler
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 20
+
+message=test&str=krt

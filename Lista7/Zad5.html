@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="application/javascript" src="jquery-1.11.1.js"></script>
+         <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $("#name").keyup(function(event)
+                {
+                    $.ajax(
+                    {
+                        method: "POST",
+                        url: "Zad5.php",
+                        data:{
+                            name: $("#name").val()
+                        },
+                        success : function(msg)
+                        {
+                            console.log(msg);
+                            var array = msg.split(",");
+                            $("#name").autocomplete(
+                                {
+                                    source: array
+                                });               
+                        },
+                        error: function(sth, msg) {
+                            alert( msg);
+                        }
+                    });
+                    event.preventDefault();
+                });
+            });
+		</script>    
+    </head>
+    <body>
+        <input id="name">
+        </textarea>
+        <div></div>
+    </body>
+</html>

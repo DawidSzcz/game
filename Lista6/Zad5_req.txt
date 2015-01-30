@@ -1,0 +1,7 @@
+POST http://localhost/Zad5.php?get=true HTTP/1.1
+User-Agent: Fiddler
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 9
+
+post=true

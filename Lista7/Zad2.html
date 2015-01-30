@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zad1</title>
+        <script type="application/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $("input#b").click(function()
+                    {
+                        $("#img").load("partial.html #"+$("select").val());
+                    }
+                )
+            });
+		</script>
+	</head>
+	<body>
+        <select>
+            <option>Wroclaw</option>
+            <option>Krakow</option>
+        </select>
+        <input type="button" id="b" value="BUTT"/>
+        <div id="img"></div>
+        
+	</body>
+
+</html>
